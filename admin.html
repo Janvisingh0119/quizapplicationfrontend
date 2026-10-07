@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | QuizMaster</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+:root{--bg:#f5f7ff;--card:#fff;--ink:#172033;--muted:#718096;--primary:#6558f5;--primary2:#8b5cf6;--line:#e7eaf3;--success:#16a34a;--danger:#ef4444;--shadow:0 18px 55px rgba(31,41,78,.10)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:var(--bg)}a{text-decoration:none;color:inherit}button,input,select{font:inherit}.container{width:min(1180px,92%);margin:auto}.landing{min-height:100vh;background:radial-gradient(circle at 85% 15%,#e6ddff 0,transparent 28%),linear-gradient(180deg,#fafbff,#f2f4ff)}.nav{height:82px;display:flex;align-items:center;justify-content:space-between}.brand{display:inline-flex;align-items:center;gap:10px;font-family:"Space Grotesk";font-size:22px;font-weight:700}.brand-mark{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary2));box-shadow:0 8px 20px #6558f540}.nav-actions{display:flex;gap:10px}.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;padding:11px 17px;font-weight:700;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px)}.btn-primary{color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary2));box-shadow:0 10px 25px #6558f530}.btn-ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}.btn-lg{padding:14px 20px}.btn-full{width:100%}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center;padding:75px 0}.eyebrow{font-size:12px;font-weight:800;letter-spacing:1.7px;color:var(--primary)}.hero h1{font-family:"Space Grotesk";font-size:64px;line-height:1.03;margin:18px 0}.hero h1 span{background:linear-gradient(90deg,var(--primary),var(--primary2));-webkit-background-clip:text;color:transparent}.hero-copy>p{font-size:17px;line-height:1.75;color:var(--muted);max-width:620px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0}.stats-row{display:flex;gap:40px;margin-top:38px}.stats-row div{display:grid;gap:5px}.stats-row strong{font-size:24px}.stats-row span{font-size:12px;color:var(--muted)}.hero-card{background:linear-gradient(145deg,#24234a,#5142a7);border-radius:30px;padding:28px;color:#fff;box-shadow:0 30px 70px #5142a735;transform:rotate(2deg)}.glass-top,.mini-footer{display:flex;justify-content:space-between;color:#d9d6ff;font-size:13px}.glass-top b{color:#b9ffcf}.mini-question{font-size:23px;font-weight:700;line-height:1.35;margin:40px 0 22px}.mini-option{padding:14px 16px;border:1px solid #ffffff26;border-radius:12px;margin:10px 0;background:#ffffff0b}.mini-option.correct{background:#ffffff18;border-color:#8df1b0}.mini-option span{float:right}.mini-progress{height:7px;background:#ffffff1c;border-radius:20px;margin:28px 0 10px}.mini-progress i{display:block;width:42%;height:100%;border-radius:20px;background:#fff}.features{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-bottom:70px}.features article,.stat-card,.category-card,.table-card,.leaderboard,.profile-card,.admin-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}.features article{padding:22px}.feature-icon{font-size:28px}.features h3{margin:15px 0 8px}.features p{color:var(--muted);line-height:1.6;font-size:14px}
+.auth-page{min-height:100vh;background:radial-gradient(circle at 10% 20%,#ddd7ff,transparent 30%),#f5f4ff;padding:35px}.auth-shell{width:min(1080px,100%);margin:auto}.auth-brand{margin:0 0 20px}.auth-card{display:grid;grid-template-columns:1fr 1fr;background:#fff;border-radius:28px;overflow:hidden;box-shadow:var(--shadow)}.auth-visual{padding:60px;background:linear-gradient(145deg,#292550,#6b5cf6);color:#fff;min-height:620px}.auth-visual h1{font-family:"Space Grotesk";font-size:44px;line-height:1.1;margin:20px 0}.auth-visual p{line-height:1.8;color:#e5e2ff}.quote-card{margin-top:60px;padding:20px;border:1px solid #ffffff2b;background:#ffffff12;border-radius:16px}.auth-form{padding:55px 50px}.auth-form h2{font-family:"Space Grotesk";font-size:34px;margin:0 0 7px}.auth-form label{display:block;font-weight:700;font-size:13px;margin:20px 0}.auth-form input,.auth-form select{display:block;width:100%;padding:14px;margin-top:8px;border:1px solid #dfe3ef;border-radius:11px;outline:none}.auth-form input:focus{border-color:var(--primary);box-shadow:0 0 0 4px #6558f514}.password-wrap{position:relative}.password-wrap input{padding-right:65px}.text-btn,.link-btn{border:0;background:none;color:var(--primary);font-weight:700;cursor:pointer}.password-wrap .text-btn{position:absolute;right:10px;top:50%;transform:translateY(-50%)}.form-row{display:flex;justify-content:space-between;align-items:center;font-size:13px}.check{display:flex!important;align-items:center;gap:8px!important;font-weight:500!important}.check input{width:auto!important;margin:0!important}.message{padding:10px;margin-top:15px;border-radius:10px;text-align:center;font-size:13px}.message.error{background:#fee2e2;color:#991b1b}.center{text-align:center;margin-top:25px}.muted{color:var(--muted);line-height:1.6}.auth-form a{color:var(--primary);font-weight:700}
+.app-body{background:#f6f7fb}.app-shell{min-height:100vh;display:flex}.sidebar{position:fixed;left:0;top:0;bottom:0;width:255px;background:#fff;border-right:1px solid var(--line);padding:24px 18px;display:flex;flex-direction:column;z-index:5}.user-mini{display:flex;align-items:center;gap:10px;margin:32px 8px 25px;padding:12px;background:#f7f7ff;border-radius:14px}.avatar,.profile-avatar{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;display:grid;place-items:center;font-weight:800}.user-mini b,.user-mini small{display:block}.user-mini small{color:var(--muted);font-size:11px;margin-top:3px}.sidebar nav{display:grid;gap:6px}.sidebar nav a{padding:12px 13px;border-radius:11px;color:#667085;font-weight:600}.sidebar nav a:hover,.sidebar nav a.active{background:#efedff;color:var(--primary)}.logout-btn{margin-top:auto;border:0;background:#fff1f2;color:#be123c;padding:12px;border-radius:11px;font-weight:700;cursor:pointer}.main-content{margin-left:255px;width:calc(100% - 255px);padding:38px 5%}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}.topbar h1{font-family:"Space Grotesk";font-size:35px;margin:8px 0}.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:38px}.stat-card{padding:22px}.stat-card span,.stat-card small{display:block;color:var(--muted);font-size:13px}.stat-card strong{display:block;font-family:"Space Grotesk";font-size:34px;margin:8px 0}.section-head{display:flex;justify-content:space-between;align-items:center;margin:25px 0 16px}.section-head h2{font-family:"Space Grotesk";margin:0}.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.category-grid.large{grid-template-columns:repeat(2,1fr)}.category-card{padding:20px;display:flex;align-items:center;gap:15px;transition:.2s}.category-card:hover{transform:translateY(-3px);border-color:#c9c4ff}.category-card .cat-icon{font-size:32px;width:55px;height:55px;display:grid;place-items:center;background:#f2f0ff;border-radius:15px}.category-card h3{margin:0 0 5px}.category-card p{margin:0;color:var(--muted);font-size:13px}.category-card>span{margin-left:auto;color:var(--primary);font-weight:700}.table-card{overflow:hidden}.table-row{display:grid;grid-template-columns:1fr 110px 90px;align-items:center;gap:10px;padding:18px 22px;border-bottom:1px solid var(--line)}.table-row:last-child{border:0}.table-row small{display:block;color:var(--muted);margin-top:5px;font-size:11px}.empty{text-align:center;padding:45px;color:var(--muted)}
+.quiz-wrap{max-width:900px;margin:auto}.quiz-head{display:flex;justify-content:space-between;align-items:center}.quiz-head h1{font-family:"Space Grotesk";margin:6px 0 18px}.timer{background:#fff0f0;color:#dc2626;padding:10px 15px;border-radius:12px;font-weight:800}.progress{height:8px;background:#e6e8f0;border-radius:20px;overflow:hidden}.progress i{height:100%;display:block;background:linear-gradient(90deg,var(--primary),var(--primary2));border-radius:20px}.quiz-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin:16px 0}.question-card{background:#fff;border:1px solid var(--line);border-radius:25px;padding:35px;box-shadow:var(--shadow)}.question-card h2{font-family:"Space Grotesk";font-size:28px;line-height:1.35;margin-top:0}.options{display:grid;gap:12px;margin:28px 0}.option{display:flex;align-items:center;gap:15px;padding:16px;border:1px solid #e0e3ec;background:#fff;border-radius:13px;text-align:left;cursor:pointer}.option b{width:34px;height:34px;border-radius:10px;background:#f1f2f7;display:grid;place-items:center}.option:hover{border-color:#aaa2ff}.option.correct{border-color:#22c55e;background:#ecfdf3}.option.wrong{border-color:#ef4444;background:#fef2f2}.option:disabled{cursor:not-allowed}.quiz-actions{display:flex;justify-content:space-between;align-items:center}.result-page{text-align:center;max-width:750px;margin:30px auto}.result-page h1{font-family:"Space Grotesk";font-size:44px}.result-score{width:190px;height:190px;margin:30px auto;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#6558f5,#8b5cf6);color:#fff;box-shadow:0 20px 50px #6558f540}.result-score strong{font-size:50px}.result-score span{margin-top:-55px}.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:25px 0}.result-stats div{padding:18px;background:#fff;border:1px solid var(--line);border-radius:15px}.result-stats b,.result-stats span{display:block}.result-stats b{font-size:25px}.leaderboard{overflow:hidden}.leader-row{display:grid;grid-template-columns:50px 45px 1fr 100px;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line)}.rank{font-weight:800;color:var(--primary);font-size:20px}.leader-name b,.leader-name small{display:block}.leader-name small{color:var(--muted);font-size:11px;margin-top:3px}.profile-card{display:flex;align-items:center;gap:20px;padding:30px;margin-bottom:20px}.profile-avatar{width:80px;height:80px;font-size:28px}.profile-info h2{margin:0 0 5px;font-family:"Space Grotesk"}.profile-info p{margin:0 0 10px;color:var(--muted)}.pill{display:inline-block;background:#efedff;color:var(--primary);padding:6px 10px;border-radius:30px;font-size:11px;font-weight:800}.admin-card{padding:25px;margin:20px 0}.admin-card h2{font-family:"Space Grotesk"}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.form-grid input,.form-grid select{padding:13px;border:1px solid var(--line);border-radius:10px}.admin-list{display:grid}.admin-row{display:flex;justify-content:space-between;gap:15px;padding:15px 0;border-bottom:1px solid var(--line)}.admin-row small{display:block;color:var(--muted);margin-top:5px}.danger-btn{border:0;background:#fee2e2;color:#b91c1c;padding:8px 12px;border-radius:8px;font-weight:700;cursor:pointer}
+@media(max-width:900px){.hero{grid-template-columns:1fr;gap:25px}.features{grid-template-columns:repeat(2,1fr)}.sidebar{width:75px;padding:20px 10px}.sidebar .brand{justify-content:center}.sidebar .brand:not(.brand-mark){font-size:0}.sidebar .brand-mark{font-size:20px}.user-mini{justify-content:center;padding:7px}.user-mini>div:last-child,.sidebar nav a{font-size:0;text-align:center}.sidebar nav a:first-letter{font-size:20px}.logout-btn{font-size:0}.logout-btn:first-letter{font-size:18px}.main-content{margin-left:75px;width:calc(100% - 75px)}.stat-grid{grid-template-columns:repeat(2,1fr)}.category-grid{grid-template-columns:1fr}.category-grid.large{grid-template-columns:1fr}.auth-card{grid-template-columns:1fr}.auth-visual{display:none}}
+@media(max-width:600px){.nav-actions .btn-ghost{display:none}.hero{padding:45px 0}.hero h1{font-size:44px}.features{grid-template-columns:1fr}.stats-row{gap:20px}.main-content{padding:25px 16px}.topbar{align-items:flex-start;gap:15px;flex-direction:column}.stat-grid{grid-template-columns:1fr 1fr}.stat-card strong{font-size:27px}.question-card{padding:22px}.question-card h2{font-size:22px}.result-stats{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.auth-page{padding:15px}.auth-form{padding:35px 25px}}
+.admin-stat-grid{grid-template-columns:repeat(3,1fr)}
+.admin-stat-label{font-size:25px!important}
+.admin-note{padding:18px 20px;background:#efedff;border:1px solid #dcd8ff;border-radius:16px;color:#3f3888;margin:-14px 0 34px}
+.admin-note p{margin:6px 0 0;color:#615b9f;line-height:1.6;font-size:14px}
+.admin-directory{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+.admin-directory .section-head{margin:0 0 20px}
+.admin-directory .section-head h2{font-family:"Space Grotesk";margin:0}
+.admin-directory .section-head p{margin:6px 0 0;font-size:13px}
+.admin-directory-count{color:var(--muted);font-size:13px}
+.admin-search-label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}
+.admin-search{width:min(420px,100%);padding:12px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:18px;outline:none}
+.admin-search:focus{border-color:var(--primary);box-shadow:0 0 0 4px #6558f514}
+.admin-user-table{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.admin-user-header,.admin-user-row{display:grid;grid-template-columns:minmax(180px,1.1fr) minmax(180px,1.2fr) minmax(120px,.7fr);align-items:center;gap:16px;padding:14px 18px}
+.admin-user-header{background:#f7f7fb;color:var(--muted);font-size:12px;font-weight:700}
+.admin-user-row{border-top:1px solid var(--line);font-size:13px}
+.admin-user-name{display:flex;align-items:center;gap:11px;min-width:0}
+.admin-user-name .avatar{flex:0 0 38px;width:38px;height:38px;border-radius:12px}
+.admin-user-name b,.admin-user-name small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.admin-user-name small{font-size:11px;color:var(--muted);margin-top:4px}
+.admin-user-email{overflow-wrap:anywhere}
+.admin-user-table .empty{padding:30px 16px}
+@media(max-width:800px){.admin-stat-grid{grid-template-columns:repeat(2,1fr)}.admin-user-header,.admin-user-row{grid-template-columns:minmax(150px,1fr) minmax(170px,1fr)}.admin-user-header span:last-child,.admin-user-row>span:last-child{display:none}}
+@media(max-width:600px){.admin-stat-grid{grid-template-columns:1fr 1fr}.admin-stat-label{font-size:20px!important}.admin-directory{padding:18px 14px}.admin-directory .section-head{align-items:flex-start;flex-direction:column}.admin-user-header,.admin-user-row{grid-template-columns:minmax(125px,1fr) minmax(135px,1fr);gap:9px;padding:12px 10px;font-size:12px}.admin-user-name{gap:8px}.admin-user-name .avatar{flex-basis:32px;width:32px;height:32px}}
+.admin-category-manager{margin-bottom:32px}
+.admin-category-form{margin:20px 0}
+.admin-category-input-row{display:flex;align-items:flex-start;gap:12px}
+.admin-category-input-row .admin-search{margin:0;flex:1}
+.admin-category-input-row .btn{white-space:nowrap;padding:12px 18px}
+.admin-category-form>small{display:block;margin-top:9px}
+.admin-category-list{display:flex;flex-wrap:wrap;align-items:center;gap:9px;border-top:1px solid var(--line);padding-top:18px}
+.admin-category-chip{background:#efedff;color:#5145c3;border:1px solid #dedaff;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:700}
+.category-load-warning{padding:12px 16px;margin:0 0 18px;border-radius:11px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;font-size:13px}
+@media(max-width:600px){.admin-category-input-row{flex-direction:column}.admin-category-input-row .admin-search,.admin-category-input-row .btn{width:100%}}
+
+</style>
+</head>
+<body class="app-body">
+  <div id="app"></div>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script>
+// Add the web app configuration from Firebase Console to enable authentication.
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA9pEF5JVQq0vZh0XmWr-AnKcwnS7KnwaM",
+  authDomain: "quiz-266cc.firebaseapp.com",
+  projectId: "quiz-266cc",
+  storageBucket: "quiz-266cc.firebasestorage.app",
+  messagingSenderId: "401988317818",
+  appId: "1:401988317818:web:8960258f9108b3b3ac81c3",
+  measurementId: "G-DVMXV0QJMH"
+};
+
+const firebaseConfigured = Object.values(firebaseConfig).every(value =>
+  typeof value === "string" && value.length > 0 && !value.startsWith("YOUR_")
+);
+
+if (firebaseConfigured && !firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+</script>
+  <script>
+const QM = {
+  defaultCategories: ["CSE", "Java", "Python", "HTML", "CSS", "JavaScript", "Database", "Cloud"],
+  categories: ["CSE", "Java", "Python", "HTML", "CSS", "JavaScript", "Database", "Cloud"],
+  customCategories: [],
+  categoryLoadError: null,
+  async loadCategories() {
+    this.categoryLoadError = null;
+    this.customCategories = [];
+    this.categories = [...this.defaultCategories];
+    if (typeof firebase === "undefined" || typeof firebaseConfigured === "undefined" || !firebaseConfigured) {
+      this.categoryLoadError = new Error("Firebase is not configured. Custom categories are unavailable.");
+      console.error(this.categoryLoadError.message);
+      return this.categories;
+    }
+
+    try {
+      const auth = firebase.auth();
+      const authenticatedUser = auth.currentUser || await new Promise((resolve, reject) => {
+        let unsubscribe = () => {};
+        unsubscribe = auth.onAuthStateChanged(
+          user => {
+            unsubscribe();
+            resolve(user);
+          },
+          error => {
+            unsubscribe();
+            reject(error);
+          }
+        );
+      });
+      if (!authenticatedUser) throw new Error("Sign in to load custom categories.");
+
+      const snapshot = await firebase.firestore().collection("categories").get();
+      const seen = new Set(this.defaultCategories.map(category => category.toLocaleLowerCase()));
+      const customCategories = snapshot.docs
+        .map(documentSnapshot => documentSnapshot.data())
+        .filter(category => typeof category.name === "string" && category.name.trim())
+        .map(category => category.name.trim())
+        .filter(category => {
+          const key = category.toLocaleLowerCase();
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        })
+        .sort((first, second) => first.localeCompare(second));
+
+      this.customCategories = customCategories;
+      this.categories = [...this.defaultCategories, ...customCategories];
+    } catch (error) {
+      console.error("Could not load custom quiz categories:", error);
+      this.categoryLoadError = error;
+      this.categories = [...this.defaultCategories];
+    }
+
+    return this.categories;
+  },
+  escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, character => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    })[character]);
+  },
+  user() {
+    return JSON.parse(localStorage.getItem("qm_currentUser") || "null");
+  },
+  requireAuth() {
+    if (!this.user()) location.href = "login.html";
+  },
+  logout() {
+    localStorage.removeItem("qm_currentUser");
+    location.href = "login.html";
+  },
+  results() { return JSON.parse(localStorage.getItem("qm_results") || "[]"); },
+  saveResults(r) { localStorage.setItem("qm_results", JSON.stringify(r)); },
+  shell(active="home") {
+    const u=this.user();
+    const name=u?.name || "Learner";
+    document.getElementById("app").innerHTML = `
+      <div class="app-shell">
+        <aside class="sidebar">
+          <a class="brand" href="home.html"><span class="brand-mark">Q</span> QuizMaster</a>
+          <div class="user-mini"><div class="avatar">${name[0].toUpperCase()}</div><div><b>${name}</b><small>${u?.role==="admin"?"Administrator":"Learner"}</small></div></div>
+          <nav>
+            <a class="${active==="home"?"active":""}" href="home.html">⌂ Dashboard</a>
+            <a class="${active==="categories"?"active":""}" href="categories.html">▦ Categories</a>
+            <a class="${active==="history"?"active":""}" href="history.html">◷ History</a>
+            <a class="${active==="leaderboard"?"active":""}" href="leaderboard.html">♛ Leaderboard</a>
+            <a class="${active==="profile"?"active":""}" href="profile.html">◎ Profile</a>
+            ${u?.role==="admin"?`<a class="${active==="admin"?"active":""}" href="admin.html">⚙ Admin Panel</a>`:""}
+          </nav>
+          <button class="logout-btn" onclick="QM.logout()">↪ Logout</button>
+        </aside>
+        <main class="main-content">${document.getElementById("pageContent")?.innerHTML || ""}</main>
+      </div>`;
+  }
+};
+
+</script>
+  <script>
+const app = document.getElementById("app");
+
+function showMessage(title, message, action = "") {
+  app.innerHTML = `
+    <div class="empty-page">
+      <h1>${title}</h1>
+      <p class="muted">${message}</p>
+      ${action}
+    </div>`;
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
+}
+
+function waitForAuthenticatedUser(auth) {
+  if (auth.currentUser) return Promise.resolve(auth.currentUser);
+
+  return new Promise((resolve, reject) => {
+    let unsubscribe = () => {};
+    unsubscribe = auth.onAuthStateChanged(
+      user => {
+        unsubscribe();
+        resolve(user);
+      },
+      error => {
+        unsubscribe();
+        reject(error);
+      }
+    );
+  });
+}
+
+function dateFor(value) {
+  if (value && typeof value.toDate === "function") return value.toDate();
+  if (!value) return null;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function renderDirectory(users) {
+  const search = document.getElementById("userSearch");
+  const list = document.getElementById("userList");
+  const count = document.getElementById("directoryCount");
+
+  const renderRows = () => {
+    const query = search.value.trim().toLocaleLowerCase();
+    const matchingUsers = users.filter(user =>
+      `${user.name} ${user.email}`.toLocaleLowerCase().includes(query)
+    );
+    count.textContent = `${matchingUsers.length} of ${users.length} profiles`;
+
+    if (!matchingUsers.length) {
+      list.innerHTML = `<div class="empty">${query ? "No profiles match your search." : "No user profiles found."}</div>`;
+      return;
+    }
+
+    list.innerHTML = matchingUsers.map(user => {
+      const joined = dateFor(user.createdAt);
+      const joinedLabel = joined
+        ? joined.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
+        : "Date unavailable";
+      const initial = escapeHtml(user.name.charAt(0).toUpperCase() || "?");
+      const role = user.role === "admin" ? "Administrator" : "Learner";
+
+      return `
+        <div class="admin-user-row">
+          <div class="admin-user-name">
+            <span class="avatar">${initial}</span>
+            <span><b>${escapeHtml(user.name)}</b><small>${escapeHtml(role)}</small></span>
+          </div>
+          <span class="admin-user-email">${escapeHtml(user.email)}</span>
+          <span>${escapeHtml(joinedLabel)}</span>
+        </div>`;
+    }).join("");
+  };
+
+  search.addEventListener("input", renderRows);
+  renderRows();
+}
+
+async function loadUserDirectory(database) {
+  const refreshButton = document.getElementById("refreshUsers");
+  const status = document.getElementById("adminStatus");
+  const list = document.getElementById("userList");
+  refreshButton.disabled = true;
+  status.textContent = "Loading registered profiles...";
+  list.innerHTML = `<div class="empty" role="status">Loading users...</div>`;
+
+  try {
+    const snapshot = await database.collection("users").get();
+    const users = snapshot.docs.map(documentSnapshot => {
+      const data = documentSnapshot.data();
+      return {
+        name: typeof data.name === "string" && data.name.trim() ? data.name.trim() : "Unnamed user",
+        email: typeof data.email === "string" ? data.email : "Email unavailable",
+        role: data.role,
+        createdAt: data.createdAt
+      };
+    });
+    users.sort((first, second) =>
+      (dateFor(second.createdAt)?.getTime() || 0) - (dateFor(first.createdAt)?.getTime() || 0)
+    );
+
+    document.getElementById("userCount").textContent = String(users.length);
+    status.textContent = `Firebase connected. ${users.length} registered profile${users.length === 1 ? "" : "s"} loaded.`;
+    renderDirectory(users);
+  } catch (error) {
+    console.error("Could not load the admin user directory:", error);
+    status.textContent = "Could not load user profiles. Check your Firestore rules and connection, then try again.";
+    list.innerHTML = `<div class="empty" role="alert">The user directory is unavailable right now.</div>`;
+    document.getElementById("directoryCount").textContent = "Unavailable";
+  } finally {
+    refreshButton.disabled = false;
+  }
+}
+
+async function loadCategoryManager(database) {
+  const refreshButton = document.getElementById("refreshCategories");
+  const status = document.getElementById("categoryStatus");
+  const list = document.getElementById("categoryList");
+  refreshButton.disabled = true;
+  status.textContent = "Loading categories...";
+
+  try {
+    const snapshot = await database.collection("categories").get();
+    const seen = new Set(QM.defaultCategories.map(category => category.toLocaleLowerCase()));
+    const categories = snapshot.docs
+      .map(documentSnapshot => documentSnapshot.data())
+      .filter(category => typeof category.name === "string" && category.name.trim())
+      .map(category => category.name.trim())
+      .filter(category => {
+        const key = category.toLocaleLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      })
+      .sort((first, second) => first.localeCompare(second));
+
+    QM.customCategories = categories;
+    QM.categories = [...QM.defaultCategories, ...categories];
+    document.getElementById("categoryCount").textContent = String(QM.categories.length);
+    status.textContent = `${categories.length} custom categor${categories.length === 1 ? "y" : "ies"} available to learners.`;
+    list.innerHTML = categories.length
+      ? categories.map(category => `<span class="admin-category-chip">${escapeHtml(category)}</span>`).join("")
+      : `<span class="muted">No custom categories yet.</span>`;
+    return true;
+  } catch (error) {
+    console.error("Could not load admin categories:", error);
+    status.textContent = "Could not load categories. Check your Firestore rules and connection, then refresh.";
+    list.innerHTML = `<span class="muted" role="alert">Custom categories are unavailable.</span>`;
+    return false;
+  } finally {
+    refreshButton.disabled = false;
+  }
+}
+
+async function addCategory(database, userId) {
+  const form = document.getElementById("addCategoryForm");
+  const input = document.getElementById("newCategoryName");
+  const submitButton = form.querySelector("[type='submit']");
+  const status = document.getElementById("categoryStatus");
+  const name = input.value.trim().replace(/\s+/g, " ");
+
+  if (!/^[A-Za-z0-9][A-Za-z0-9 &.+#()_-]{0,49}$/.test(name)) {
+    status.textContent = "Use 1–50 letters or numbers; spaces and & . + # ( ) _ - are also allowed.";
+    input.focus();
+    return;
+  }
+
+  submitButton.disabled = true;
+  status.textContent = "Checking for duplicates...";
+  try {
+    const snapshot = await database.collection("categories").get();
+    const existingNames = [
+      ...QM.defaultCategories,
+      ...snapshot.docs.map(documentSnapshot => documentSnapshot.data().name).filter(name => typeof name === "string")
+    ];
+    if (existingNames.some(existing => existing.toLocaleLowerCase() === name.toLocaleLowerCase())) {
+      status.textContent = "That category already exists. Choose a different name.";
+      input.focus();
+      return;
+    }
+
+    status.textContent = "Saving category...";
+    const categoryId = encodeURIComponent(name.toLowerCase());
+    await database.collection("categories").doc(categoryId).set({
+      name,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      createdBy: userId
+    });
+    form.reset();
+    const refreshed = await loadCategoryManager(database);
+    status.textContent = refreshed
+      ? `Added "${name}". Learners can now select it to generate AI questions.`
+      : `Added "${name}", but the category list could not refresh. Use Refresh categories to try again.`;
+  } catch (error) {
+    console.error("Could not add quiz category:", error);
+    status.textContent = "Could not add this category. Check your connection and Firestore rules, then try again.";
+  } finally {
+    submitButton.disabled = false;
+  }
+}
+
+async function initializeAdmin() {
+  if (typeof firebase === "undefined" || typeof firebaseConfigured === "undefined" || !firebaseConfigured) {
+    showMessage(
+      "Admin dashboard unavailable",
+      "Firebase is not configured or could not be loaded. Check the Firebase setup and your connection."
+    );
+    return;
+  }
+
+  try {
+    const auth = firebase.auth();
+    const authenticatedUser = await waitForAuthenticatedUser(auth);
+    if (!authenticatedUser) {
+      showMessage(
+        "Sign in required",
+        "Sign in with an administrator account to access this page.",
+        `<a class="btn btn-primary" href="login.html">Go to Login</a>`
+      );
+      return;
+    }
+
+    const database = firebase.firestore();
+    const profileSnapshot = await database.collection("users").doc(authenticatedUser.uid).get();
+    const profile = profileSnapshot.exists ? profileSnapshot.data() : null;
+    if (profile?.role !== "admin") {
+      showMessage(
+        "Access denied",
+        "Administrator privileges are required to view this page.",
+        `<a class="btn btn-primary" href="home.html">Back Home</a>`
+      );
+      return;
+    }
+
+    const user = {
+      id: authenticatedUser.uid,
+      uid: authenticatedUser.uid,
+      name: typeof profile.name === "string" && profile.name.trim()
+        ? profile.name.trim()
+        : authenticatedUser.displayName || "Administrator",
+      email: profile.email || authenticatedUser.email || "",
+      role: "admin"
+    };
+    localStorage.setItem("qm_currentUser", JSON.stringify(user));
+
+    app.innerHTML = `<div id="pageContent"></div>`;
+    QM.shell("admin");
+    document.querySelector(".main-content").innerHTML = `
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">MANAGEMENT</span>
+          <h1>Admin Dashboard</h1>
+          <p class="muted">Monitor registered accounts and QuizMaster services.</p>
+        </div>
+        <button class="btn btn-primary" id="refreshUsers" type="button">Refresh data</button>
+      </header>
+      <section class="stat-grid admin-stat-grid" aria-label="Platform overview">
+        <div class="stat-card"><span>Registered Users</span><strong id="userCount">—</strong><small>Firebase user profiles</small></div>
+        <div class="stat-card"><span>Quiz Categories</span><strong id="categoryCount">${QM.categories.length}</strong><small>Available to learners</small></div>
+        <div class="stat-card"><span>Question Generation</span><strong class="admin-stat-label">AI powered</strong><small>Questions are generated on demand</small></div>
+      </section>
+      <section class="admin-note">
+        <b>Quiz activity reporting</b>
+        <p>Quiz attempts are stored in each learner's browser. They are not available as a site-wide admin statistic.</p>
+      </section>
+      <section class="admin-directory admin-category-manager">
+        <div class="section-head">
+          <div><h2>Quiz categories</h2><p class="muted" id="categoryStatus" role="status">Preparing category manager...</p></div>
+          <button class="btn btn-ghost" id="refreshCategories" type="button">Refresh categories</button>
+        </div>
+        <form class="admin-category-form" id="addCategoryForm">
+          <label class="admin-search-label" for="newCategoryName">Add a category</label>
+          <div class="admin-category-input-row">
+            <input class="admin-search" id="newCategoryName" type="text" maxlength="50" placeholder="For example, Cybersecurity" required>
+            <button class="btn btn-primary" type="submit">Add category</button>
+          </div>
+          <small class="muted">Learners can select each category to generate 10 fresh AI quiz questions.</small>
+        </form>
+        <div class="admin-category-list" id="categoryList"><span class="muted">Loading categories...</span></div>
+      </section>
+      <section class="admin-directory">
+        <div class="section-head">
+          <div><h2>User directory</h2><p class="muted" id="adminStatus" role="status">Connecting to Firebase...</p></div>
+          <span class="admin-directory-count" id="directoryCount">Loading...</span>
+        </div>
+        <label class="admin-search-label" for="userSearch">Search users</label>
+        <input class="admin-search" id="userSearch" type="search" placeholder="Search by name or email">
+        <div class="admin-user-table">
+          <div class="admin-user-header"><span>User</span><span>Email</span><span>Joined</span></div>
+          <div id="userList"><div class="empty" role="status">Loading users...</div></div>
+        </div>
+      </section>`;
+
+    document.getElementById("refreshUsers").addEventListener("click", () => loadUserDirectory(database));
+    document.getElementById("refreshCategories").addEventListener("click", () => loadCategoryManager(database));
+    document.getElementById("addCategoryForm").addEventListener("submit", event => {
+      event.preventDefault();
+      addCategory(database, authenticatedUser.uid);
+    });
+    await loadCategoryManager(database);
+    await loadUserDirectory(database);
+  } catch (error) {
+    console.error("Could not initialize the admin dashboard:", error);
+    showMessage(
+      "Admin dashboard unavailable",
+      "We could not verify your administrator profile. Check your connection and Firestore rules, then try again.",
+      `<a class="btn btn-primary" href="admin.html">Try again</a>`
+    );
+  }
+}
+
+initializeAdmin();
+
+</script>
+</body>
+</html>

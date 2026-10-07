@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | QuizMaster</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+:root{--bg:#f5f7ff;--card:#fff;--ink:#172033;--muted:#718096;--primary:#6558f5;--primary2:#8b5cf6;--line:#e7eaf3;--success:#16a34a;--danger:#ef4444;--shadow:0 18px 55px rgba(31,41,78,.10)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:var(--bg)}a{text-decoration:none;color:inherit}button,input,select{font:inherit}.container{width:min(1180px,92%);margin:auto}.landing{min-height:100vh;background:radial-gradient(circle at 85% 15%,#e6ddff 0,transparent 28%),linear-gradient(180deg,#fafbff,#f2f4ff)}.nav{height:82px;display:flex;align-items:center;justify-content:space-between}.brand{display:inline-flex;align-items:center;gap:10px;font-family:"Space Grotesk";font-size:22px;font-weight:700}.brand-mark{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary2));box-shadow:0 8px 20px #6558f540}.nav-actions{display:flex;gap:10px}.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;padding:11px 17px;font-weight:700;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px)}.btn-primary{color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary2));box-shadow:0 10px 25px #6558f530}.btn-ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}.btn-lg{padding:14px 20px}.btn-full{width:100%}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center;padding:75px 0}.eyebrow{font-size:12px;font-weight:800;letter-spacing:1.7px;color:var(--primary)}.hero h1{font-family:"Space Grotesk";font-size:64px;line-height:1.03;margin:18px 0}.hero h1 span{background:linear-gradient(90deg,var(--primary),var(--primary2));-webkit-background-clip:text;color:transparent}.hero-copy>p{font-size:17px;line-height:1.75;color:var(--muted);max-width:620px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0}.stats-row{display:flex;gap:40px;margin-top:38px}.stats-row div{display:grid;gap:5px}.stats-row strong{font-size:24px}.stats-row span{font-size:12px;color:var(--muted)}.hero-card{background:linear-gradient(145deg,#24234a,#5142a7);border-radius:30px;padding:28px;color:#fff;box-shadow:0 30px 70px #5142a735;transform:rotate(2deg)}.glass-top,.mini-footer{display:flex;justify-content:space-between;color:#d9d6ff;font-size:13px}.glass-top b{color:#b9ffcf}.mini-question{font-size:23px;font-weight:700;line-height:1.35;margin:40px 0 22px}.mini-option{padding:14px 16px;border:1px solid #ffffff26;border-radius:12px;margin:10px 0;background:#ffffff0b}.mini-option.correct{background:#ffffff18;border-color:#8df1b0}.mini-option span{float:right}.mini-progress{height:7px;background:#ffffff1c;border-radius:20px;margin:28px 0 10px}.mini-progress i{display:block;width:42%;height:100%;border-radius:20px;background:#fff}.features{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-bottom:70px}.features article,.stat-card,.category-card,.table-card,.leaderboard,.profile-card,.admin-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}.features article{padding:22px}.feature-icon{font-size:28px}.features h3{margin:15px 0 8px}.features p{color:var(--muted);line-height:1.6;font-size:14px}
+.auth-page{min-height:100vh;background:radial-gradient(circle at 10% 20%,#ddd7ff,transparent 30%),#f5f4ff;padding:35px}.auth-shell{width:min(1080px,100%);margin:auto}.auth-brand{margin:0 0 20px}.auth-card{display:grid;grid-template-columns:1fr 1fr;background:#fff;border-radius:28px;overflow:hidden;box-shadow:var(--shadow)}.auth-visual{padding:60px;background:linear-gradient(145deg,#292550,#6b5cf6);color:#fff;min-height:620px}.auth-visual h1{font-family:"Space Grotesk";font-size:44px;line-height:1.1;margin:20px 0}.auth-visual p{line-height:1.8;color:#e5e2ff}.quote-card{margin-top:60px;padding:20px;border:1px solid #ffffff2b;background:#ffffff12;border-radius:16px}.auth-form{padding:55px 50px}.auth-form h2{font-family:"Space Grotesk";font-size:34px;margin:0 0 7px}.auth-form label{display:block;font-weight:700;font-size:13px;margin:20px 0}.auth-form input,.auth-form select{display:block;width:100%;padding:14px;margin-top:8px;border:1px solid #dfe3ef;border-radius:11px;outline:none}.auth-form input:focus{border-color:var(--primary);box-shadow:0 0 0 4px #6558f514}.password-wrap{position:relative}.password-wrap input{padding-right:65px}.text-btn,.link-btn{border:0;background:none;color:var(--primary);font-weight:700;cursor:pointer}.password-wrap .text-btn{position:absolute;right:10px;top:50%;transform:translateY(-50%)}.form-row{display:flex;justify-content:space-between;align-items:center;font-size:13px}.check{display:flex!important;align-items:center;gap:8px!important;font-weight:500!important}.check input{width:auto!important;margin:0!important}.message{padding:10px;margin-top:15px;border-radius:10px;text-align:center;font-size:13px}.message.error{background:#fee2e2;color:#991b1b}.center{text-align:center;margin-top:25px}.muted{color:var(--muted);line-height:1.6}.auth-form a{color:var(--primary);font-weight:700}
+.app-body{background:#f6f7fb}.app-shell{min-height:100vh;display:flex}.sidebar{position:fixed;left:0;top:0;bottom:0;width:255px;background:#fff;border-right:1px solid var(--line);padding:24px 18px;display:flex;flex-direction:column;z-index:5}.user-mini{display:flex;align-items:center;gap:10px;margin:32px 8px 25px;padding:12px;background:#f7f7ff;border-radius:14px}.avatar,.profile-avatar{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;display:grid;place-items:center;font-weight:800}.user-mini b,.user-mini small{display:block}.user-mini small{color:var(--muted);font-size:11px;margin-top:3px}.sidebar nav{display:grid;gap:6px}.sidebar nav a{padding:12px 13px;border-radius:11px;color:#667085;font-weight:600}.sidebar nav a:hover,.sidebar nav a.active{background:#efedff;color:var(--primary)}.logout-btn{margin-top:auto;border:0;background:#fff1f2;color:#be123c;padding:12px;border-radius:11px;font-weight:700;cursor:pointer}.main-content{margin-left:255px;width:calc(100% - 255px);padding:38px 5%}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}.topbar h1{font-family:"Space Grotesk";font-size:35px;margin:8px 0}.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:38px}.stat-card{padding:22px}.stat-card span,.stat-card small{display:block;color:var(--muted);font-size:13px}.stat-card strong{display:block;font-family:"Space Grotesk";font-size:34px;margin:8px 0}.section-head{display:flex;justify-content:space-between;align-items:center;margin:25px 0 16px}.section-head h2{font-family:"Space Grotesk";margin:0}.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.category-grid.large{grid-template-columns:repeat(2,1fr)}.category-card{padding:20px;display:flex;align-items:center;gap:15px;transition:.2s}.category-card:hover{transform:translateY(-3px);border-color:#c9c4ff}.category-card .cat-icon{font-size:32px;width:55px;height:55px;display:grid;place-items:center;background:#f2f0ff;border-radius:15px}.category-card h3{margin:0 0 5px}.category-card p{margin:0;color:var(--muted);font-size:13px}.category-card>span{margin-left:auto;color:var(--primary);font-weight:700}.table-card{overflow:hidden}.table-row{display:grid;grid-template-columns:1fr 110px 90px;align-items:center;gap:10px;padding:18px 22px;border-bottom:1px solid var(--line)}.table-row:last-child{border:0}.table-row small{display:block;color:var(--muted);margin-top:5px;font-size:11px}.empty{text-align:center;padding:45px;color:var(--muted)}
+.quiz-wrap{max-width:900px;margin:auto}.quiz-head{display:flex;justify-content:space-between;align-items:center}.quiz-head h1{font-family:"Space Grotesk";margin:6px 0 18px}.timer{background:#fff0f0;color:#dc2626;padding:10px 15px;border-radius:12px;font-weight:800}.progress{height:8px;background:#e6e8f0;border-radius:20px;overflow:hidden}.progress i{height:100%;display:block;background:linear-gradient(90deg,var(--primary),var(--primary2));border-radius:20px}.quiz-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin:16px 0}.question-card{background:#fff;border:1px solid var(--line);border-radius:25px;padding:35px;box-shadow:var(--shadow)}.question-card h2{font-family:"Space Grotesk";font-size:28px;line-height:1.35;margin-top:0}.options{display:grid;gap:12px;margin:28px 0}.option{display:flex;align-items:center;gap:15px;padding:16px;border:1px solid #e0e3ec;background:#fff;border-radius:13px;text-align:left;cursor:pointer}.option b{width:34px;height:34px;border-radius:10px;background:#f1f2f7;display:grid;place-items:center}.option:hover{border-color:#aaa2ff}.option.correct{border-color:#22c55e;background:#ecfdf3}.option.wrong{border-color:#ef4444;background:#fef2f2}.option:disabled{cursor:not-allowed}.quiz-actions{display:flex;justify-content:space-between;align-items:center}.result-page{text-align:center;max-width:750px;margin:30px auto}.result-page h1{font-family:"Space Grotesk";font-size:44px}.result-score{width:190px;height:190px;margin:30px auto;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#6558f5,#8b5cf6);color:#fff;box-shadow:0 20px 50px #6558f540}.result-score strong{font-size:50px}.result-score span{margin-top:-55px}.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:25px 0}.result-stats div{padding:18px;background:#fff;border:1px solid var(--line);border-radius:15px}.result-stats b,.result-stats span{display:block}.result-stats b{font-size:25px}.leaderboard{overflow:hidden}.leader-row{display:grid;grid-template-columns:50px 45px 1fr 100px;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line)}.rank{font-weight:800;color:var(--primary);font-size:20px}.leader-name b,.leader-name small{display:block}.leader-name small{color:var(--muted);font-size:11px;margin-top:3px}.profile-card{display:flex;align-items:center;gap:20px;padding:30px;margin-bottom:20px}.profile-avatar{width:80px;height:80px;font-size:28px}.profile-info h2{margin:0 0 5px;font-family:"Space Grotesk"}.profile-info p{margin:0 0 10px;color:var(--muted)}.pill{display:inline-block;background:#efedff;color:var(--primary);padding:6px 10px;border-radius:30px;font-size:11px;font-weight:800}.admin-card{padding:25px;margin:20px 0}.admin-card h2{font-family:"Space Grotesk"}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.form-grid input,.form-grid select{padding:13px;border:1px solid var(--line);border-radius:10px}.admin-list{display:grid}.admin-row{display:flex;justify-content:space-between;gap:15px;padding:15px 0;border-bottom:1px solid var(--line)}.admin-row small{display:block;color:var(--muted);margin-top:5px}.danger-btn{border:0;background:#fee2e2;color:#b91c1c;padding:8px 12px;border-radius:8px;font-weight:700;cursor:pointer}
+@media(max-width:900px){.hero{grid-template-columns:1fr;gap:25px}.features{grid-template-columns:repeat(2,1fr)}.sidebar{width:75px;padding:20px 10px}.sidebar .brand{justify-content:center}.sidebar .brand:not(.brand-mark){font-size:0}.sidebar .brand-mark{font-size:20px}.user-mini{justify-content:center;padding:7px}.user-mini>div:last-child,.sidebar nav a{font-size:0;text-align:center}.sidebar nav a:first-letter{font-size:20px}.logout-btn{font-size:0}.logout-btn:first-letter{font-size:18px}.main-content{margin-left:75px;width:calc(100% - 75px)}.stat-grid{grid-template-columns:repeat(2,1fr)}.category-grid{grid-template-columns:1fr}.category-grid.large{grid-template-columns:1fr}.auth-card{grid-template-columns:1fr}.auth-visual{display:none}}
+@media(max-width:600px){.nav-actions .btn-ghost{display:none}.hero{padding:45px 0}.hero h1{font-size:44px}.features{grid-template-columns:1fr}.stats-row{gap:20px}.main-content{padding:25px 16px}.topbar{align-items:flex-start;gap:15px;flex-direction:column}.stat-grid{grid-template-columns:1fr 1fr}.stat-card strong{font-size:27px}.question-card{padding:22px}.question-card h2{font-size:22px}.result-stats{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.auth-page{padding:15px}.auth-form{padding:35px 25px}}
+.admin-stat-grid{grid-template-columns:repeat(3,1fr)}
+.admin-stat-label{font-size:25px!important}
+.admin-note{padding:18px 20px;background:#efedff;border:1px solid #dcd8ff;border-radius:16px;color:#3f3888;margin:-14px 0 34px}
+.admin-note p{margin:6px 0 0;color:#615b9f;line-height:1.6;font-size:14px}
+.admin-directory{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+.admin-directory .section-head{margin:0 0 20px}
+.admin-directory .section-head h2{font-family:"Space Grotesk";margin:0}
+.admin-directory .section-head p{margin:6px 0 0;font-size:13px}
+.admin-directory-count{color:var(--muted);font-size:13px}
+.admin-search-label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}
+.admin-search{width:min(420px,100%);padding:12px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:18px;outline:none}
+.admin-search:focus{border-color:var(--primary);box-shadow:0 0 0 4px #6558f514}
+.admin-user-table{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.admin-user-header,.admin-user-row{display:grid;grid-template-columns:minmax(180px,1.1fr) minmax(180px,1.2fr) minmax(120px,.7fr);align-items:center;gap:16px;padding:14px 18px}
+.admin-user-header{background:#f7f7fb;color:var(--muted);font-size:12px;font-weight:700}
+.admin-user-row{border-top:1px solid var(--line);font-size:13px}
+.admin-user-name{display:flex;align-items:center;gap:11px;min-width:0}
+.admin-user-name .avatar{flex:0 0 38px;width:38px;height:38px;border-radius:12px}
+.admin-user-name b,.admin-user-name small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.admin-user-name small{font-size:11px;color:var(--muted);margin-top:4px}
+.admin-user-email{overflow-wrap:anywhere}
+.admin-user-table .empty{padding:30px 16px}
+@media(max-width:800px){.admin-stat-grid{grid-template-columns:repeat(2,1fr)}.admin-user-header,.admin-user-row{grid-template-columns:minmax(150px,1fr) minmax(170px,1fr)}.admin-user-header span:last-child,.admin-user-row>span:last-child{display:none}}
+@media(max-width:600px){.admin-stat-grid{grid-template-columns:1fr 1fr}.admin-stat-label{font-size:20px!important}.admin-directory{padding:18px 14px}.admin-directory .section-head{align-items:flex-start;flex-direction:column}.admin-user-header,.admin-user-row{grid-template-columns:minmax(125px,1fr) minmax(135px,1fr);gap:9px;padding:12px 10px;font-size:12px}.admin-user-name{gap:8px}.admin-user-name .avatar{flex-basis:32px;width:32px;height:32px}}
+.admin-category-manager{margin-bottom:32px}
+.admin-category-form{margin:20px 0}
+.admin-category-input-row{display:flex;align-items:flex-start;gap:12px}
+.admin-category-input-row .admin-search{margin:0;flex:1}
+.admin-category-input-row .btn{white-space:nowrap;padding:12px 18px}
+.admin-category-form>small{display:block;margin-top:9px}
+.admin-category-list{display:flex;flex-wrap:wrap;align-items:center;gap:9px;border-top:1px solid var(--line);padding-top:18px}
+.admin-category-chip{background:#efedff;color:#5145c3;border:1px solid #dedaff;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:700}
+.category-load-warning{padding:12px 16px;margin:0 0 18px;border-radius:11px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;font-size:13px}
+@media(max-width:600px){.admin-category-input-row{flex-direction:column}.admin-category-input-row .admin-search,.admin-category-input-row .btn{width:100%}}
+
+</style>
+</head>
+<body class="auth-page">
+  <div class="auth-shell">
+    <a class="brand auth-brand" href="index.html"><span class="brand-mark">Q</span> QuizMaster</a>
+    <section class="auth-card">
+      <div class="auth-visual"><span class="eyebrow">JOIN QUIZMASTER</span><h1>Build knowledge one question at a time.</h1><p>Create your learner profile and start earning points through interactive quizzes.</p><div class="quote-card"><b>Included:</b> categories, timer, results, history, profile and leaderboard.</div></div>
+      <div class="auth-form">
+        <h2>Create account</h2><p class="muted">It takes less than a minute.</p>
+        <form id="registerForm">
+          <label>Full Name<input id="name" type="text" placeholder="Your full name" required></label>
+          <label>Email<input id="email" type="email" placeholder="you@example.com" required></label>
+          <label>Password<input id="password" type="password" placeholder="Minimum 6 characters" minlength="6" required></label>
+          <label>Confirm Password<input id="confirmPassword" type="password" placeholder="Repeat your password" required></label>
+          <label class="check"><input id="terms" type="checkbox" required> I agree to use this platform responsibly.</label>
+          <button class="btn btn-primary btn-full" type="submit">Create Account</button>
+        </form>
+        <div id="authMessage" class="message"></div>
+        <p class="center muted">Already registered? <a href="login.html">Sign in</a></p>
+      </div>
+    </section>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script>
+// Add the web app configuration from Firebase Console to enable authentication.
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA9pEF5JVQq0vZh0XmWr-AnKcwnS7KnwaM",
+  authDomain: "quiz-266cc.firebaseapp.com",
+  projectId: "quiz-266cc",
+  storageBucket: "quiz-266cc.firebasestorage.app",
+  messagingSenderId: "401988317818",
+  appId: "1:401988317818:web:8960258f9108b3b3ac81c3",
+  measurementId: "G-DVMXV0QJMH"
+};
+
+const firebaseConfigured = Object.values(firebaseConfig).every(value =>
+  typeof value === "string" && value.length > 0 && !value.startsWith("YOUR_")
+);
+
+if (firebaseConfigured && !firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+</script>
+  <script>
+const $ = id => document.getElementById(id);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const msg = $("authMessage");
+  const showMessage = (text, type = "error") => {
+    msg.textContent = text;
+    msg.className = `message ${type}`;
+  };
+  const firebaseReady = () => {
+    if (typeof firebase === "undefined" || !firebaseConfigured) {
+      showMessage("Firebase is not configured. Add your Firebase web app settings in js/firebase-config.js.");
+      return false;
+    }
+    return true;
+  };
+  const notifySuccessfulLogin = async user => {
+    const config = window.QM_EMAILJS_CONFIG;
+    if (
+      typeof emailjs === "undefined" ||
+      !config ||
+      !config.serviceId ||
+      !config.templateId ||
+      !config.publicKey ||
+      Object.values(config).some(
+        value => typeof value !== "string" || !value || value.startsWith("YOUR_")
+      )
+    ) {
+      console.warn("Login email notification was skipped because EmailJS is not configured.");
+      sessionStorage.setItem(
+        "qm_loginEmailNotice",
+        "You are signed in, but the login email notification was not sent. Configure EmailJS in js/emailjs-config.js."
+      );
+      return;
+    }
+
+    try {
+      if (typeof emailjs.init === "function") {
+        emailjs.init({ publicKey: config.publicKey });
+      }
+
+      const templateParams = {
+        to_email: user.email || "",
+        to_name: user.name || (user.email ? user.email.split("@")[0] : "User"),
+        login_time: new Date().toLocaleString(),
+        app_name: "QuizMaster"
+      };
+
+      try {
+        await emailjs.send(config.serviceId, config.templateId, templateParams, {
+          publicKey: config.publicKey
+        });
+      } catch (v4Error) {
+        await emailjs.send(config.serviceId, config.templateId, templateParams, config.publicKey);
+      }
+    } catch (error) {
+      console.error("Could not send the login email notification:", error);
+      sessionStorage.setItem(
+        "qm_loginEmailNotice",
+        "You are signed in, but the login email notification could not be sent. Check the EmailJS service and template settings."
+      );
+    }
+  };
+
+  const toggle = $("togglePassword");
+  if (toggle) toggle.onclick = () => {
+    const p=$("password"); p.type=p.type==="password"?"text":"password"; toggle.textContent=p.type==="password"?"Show":"Hide";
+  };
+
+  const login=$("loginForm");
+  if(login) login.onsubmit=async e=>{
+    e.preventDefault();
+    if (!firebaseReady()) return;
+    const email=$("email").value.trim().toLowerCase();
+    const password=$("password").value;
+    const persistence = $("remember").checked
+      ? firebase.auth.Auth.Persistence.LOCAL
+      : firebase.auth.Auth.Persistence.SESSION;
+    const button = login.querySelector("[type='submit']");
+    button.disabled = true;
+    showMessage("Signing in...", "success");
+    try {
+      await firebase.auth().setPersistence(persistence);
+      const credential = await firebase.auth().signInWithEmailAndPassword(email, password);
+      let profile = {
+        name: credential.user.displayName || email.split("@")[0],
+        email: credential.user.email || email,
+        role: "user"
+      };
+      try {
+        const profileRef = firebase.firestore().collection("users").doc(credential.user.uid);
+        const profileSnapshot = await profileRef.get();
+        if (profileSnapshot.exists) {
+          profile = { ...profile, ...profileSnapshot.data() };
+        } else {
+          await profileRef.set({ ...profile, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+        }
+      } catch (error) {
+        console.error("Could not load the Firestore profile after signing in:", error);
+        sessionStorage.setItem(
+          "qm_firestoreNotice",
+          "You are signed in, but your Firestore profile could not be loaded or saved. Quiz generation uses Firebase Authentication and can still work."
+        );
+      }
+      const user = { id: credential.user.uid, uid: credential.user.uid, ...profile, email };
+      await notifySuccessfulLogin(user);
+      localStorage.setItem("qm_currentUser", JSON.stringify(user));
+      location.href = "home.html";
+    } catch (error) {
+      const messages = {
+        "auth/invalid-credential": "Invalid email or password.",
+        "auth/user-not-found": "No account exists for this email. Register first.",
+        "auth/wrong-password": "Invalid email or password.",
+        "auth/too-many-requests": "Too many attempts. Try again later."
+      };
+      showMessage(messages[error.code] || "Could not sign in. Check your connection and Firebase settings.");
+    } finally {
+      button.disabled = false;
+    }
+  };
+
+  const reg=$("registerForm");
+  if(reg) reg.onsubmit=async e=>{
+    e.preventDefault();
+    if (!firebaseReady()) return;
+    const name=$("name").value.trim();
+    const email=$("email").value.trim().toLowerCase();
+    const password=$("password").value;
+    const confirmPassword=$("confirmPassword").value;
+    if(password!==confirmPassword){showMessage("Passwords do not match.");return;}
+    const button = reg.querySelector("[type='submit']");
+    button.disabled = true;
+    showMessage("Creating your account...", "success");
+    try {
+      const credential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+      await credential.user.updateProfile({ displayName: name });
+      const profile = {
+        name,
+        email,
+        role: "user",
+        createdAt: new Date().toISOString()
+      };
+      try {
+        await firebase.firestore().collection("users").doc(credential.user.uid).set({
+          ...profile,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+      } catch (error) {
+        console.error("Account created, but saving the Firestore profile failed:", error);
+        sessionStorage.setItem(
+          "qm_firestoreNotice",
+          "Your account was created and you are signed in, but your Firestore profile could not be saved. Quiz generation uses Firebase Authentication and can still work."
+        );
+      }
+      localStorage.setItem("qm_currentUser", JSON.stringify({ id: credential.user.uid, uid: credential.user.uid, ...profile }));
+      location.href = "home.html";
+    } catch (error) {
+      const messages = {
+        "auth/email-already-in-use": "An account with this email already exists.",
+        "auth/weak-password": "Choose a password with at least 6 characters.",
+        "auth/invalid-email": "Enter a valid email address."
+      };
+      showMessage(messages[error.code] || "Could not create your account. Check your connection and Firebase settings.");
+    } finally {
+      button.disabled = false;
+    }
+  };
+
+  const forgot=$("forgotBtn");
+  if(forgot) forgot.onclick=async()=>{
+    if (!firebaseReady()) return;
+    const email = $("email").value.trim().toLowerCase();
+    if (!email) {
+      showMessage("Enter your email address first.");
+      $("email").focus();
+      return;
+    }
+    try {
+      await firebase.auth().sendPasswordResetEmail(email);
+      showMessage("Password reset email sent.", "success");
+    } catch (error) {
+      showMessage(error.code === "auth/invalid-email" ? "Enter a valid email address." : "Could not send a reset email. Check the address and try again.");
+    }
+  };
+});
+
+</script>
+</body>
+</html>
