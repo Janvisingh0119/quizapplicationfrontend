@@ -74,9 +74,8 @@ if (firebaseConfigured && !firebase.apps.length) {
 }
 
 </script><script>
-// Browser API keys are public. Restrict this key in GroqCloud and set usage limits.
-window.QM_GROQ_API_KEY = "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";
-
+// URL of your QuizMaster backend (no trailing slash). Change after deploying.
+window.QM_API_URL = "http://localhost:3000";
 </script><script>
 const QM = {
   defaultCategories: ["CSE", "Java", "Python", "HTML", "CSS", "JavaScript", "Database", "Cloud"],
@@ -195,91 +194,43 @@ function waitForAuthenticatedUser(){
   unsubscribe=auth.onAuthStateChanged(user=>{unsubscribe();resolve(user)},error=>{unsubscribe();reject(error)});
  });
 }
-async function generateQuiz(){
- const apiKey=window.QM_GROQ_API_KEY;
- if(typeof apiKey!=="string"||!apiKey.trim()){
-  throw new Error("Add your Groq API key to js/groq-config.js before generating quizzes.");
+async function generateQuiz(authenticatedUser){
+ const apiUrl=window.QM_API_URL;
+ if(typeof apiUrl!=="string"||!apiUrl.trim()){
+  throw new Error("Set QM_API_URL to your backend address before generating quizzes.");
  }
- const schema={
-  type:"object",
-  properties:{
-   questions:{
-    type:"array",
-    items:{
-     type:"object",
-     properties:{
-      question:{type:"string"},
-      options:{type:"array",items:{type:"string"}},
-      answer:{type:"integer"}
-     },
-     required:["question","options","answer"],
-     additionalProperties:false
-    }
-   }
-  },
-  required:["questions"],
-  additionalProperties:false
- };
- const payload={
-  model:"openai/gpt-oss-120b",
-  messages:[
-   {role:"system",content:"Create clear, factually correct multiple-choice quiz questions. Return only data matching the required JSON schema."},
-   {role:"user",content:`Create exactly 10 clear, factually correct multiple-choice quiz questions about ${category}. Each question must have exactly four distinct answer options and one unambiguous correct answer. Vary concepts and difficulty. Set answer to the zero-based index of the correct option.`}
-  ],
-  response_format:{
-   type:"json_schema",
-   json_schema:{name:"quiz_questions",strict:true,schema}
-  }
- };
+ const idToken=await authenticatedUser.getIdToken();
  let response;
- for(let attempt=0;attempt<3;attempt++){
-  response=await fetch("https://api.groq.com/openai/v1/chat/completions",{
+ try{
+  response=await fetch(`${apiUrl.trim().replace(/\/+$/,"")}/api/generate-quiz`,{
    method:"POST",
-   headers:{"Content-Type":"application/json","Authorization":`Bearer ${apiKey.trim()}`},
-   body:JSON.stringify(payload)
+   headers:{"Content-Type":"application/json","Authorization":`Bearer ${idToken}`},
+   body:JSON.stringify({category})
   });
-  if(![429,500,502,503,504].includes(response.status)||attempt===2)break;
-  const retryAfter=Number(response.headers.get("Retry-After"));
-  const delay=Number.isFinite(retryAfter)&&retryAfter>0
-   ?Math.min(retryAfter*1000,10000)
-   :1000*(attempt+1);
-  await new Promise(resolve=>setTimeout(resolve,delay));
+ }catch(error){
+  throw new Error("Could not reach the quiz server. Check your connection and try again.");
  }
  let result;
  try{
   result=await response.json();
  }catch(error){
-  throw new Error("Groq returned an unreadable response. Check your connection and API key.");
+  throw new Error("The quiz server returned an unreadable response.");
  }
- if(!response.ok){
-  const detail=result?.error?.message||`Groq returned HTTP ${response.status}.`;
-  if([429,500,502,503,504].includes(response.status)){
-   throw new Error(`Groq is temporarily busy after automatic retries. ${detail} Please try again shortly.`);
-  }
-  throw new Error(detail);
- }
- let questions;
- try{
-  const text=result?.choices?.[0]?.message?.content;
-  if(typeof text!=="string"||!text.trim())throw new Error("Groq returned an empty response.");
-  questions=JSON.parse(text).questions;
- }catch(error){
-  throw new Error("Groq returned invalid quiz data. Try generating the quiz again.");
- }
+ if(!response.ok)throw new Error(result?.error||`Quiz server returned HTTP ${response.status}.`);
+ const questions=result?.questions;
  if(!Array.isArray(questions)||questions.length!==10||questions.some(question=>
   typeof question?.question!=="string"||!question.question.trim()
   ||!Array.isArray(question.options)||question.options.length!==4
   ||question.options.some(option=>typeof option!=="string"||!option.trim())
-  ||new Set(question.options.map(option=>option.normalize("NFKC").toLocaleLowerCase())).size!==4
   ||!Number.isInteger(question.answer)||question.answer<0||question.answer>3
  )){
- throw new Error("Groq returned an incomplete quiz. Please try again.");
+  throw new Error("The quiz server returned an incomplete quiz. Please try again.");
  }
  return questions;
 }
 async function loadQuiz(){
  clearInterval(timer);
- main.innerHTML=`<div class="empty-page"><h1>Preparing your quiz</h1><p class="muted">Groq is creating fresh questions for ${escapeHtml(category)}.</p></div>`;
+ main.innerHTML=`<div class="empty-page"><h1>Preparing your quiz</h1><p class="muted">Creating fresh questions for ${escapeHtml(category)}.</p></div>`;
  try{
   await QM.loadCategories();
   if(QM.categoryLoadError&&!QM.defaultCategories.includes(requestedCategory)){
@@ -292,7 +243,7 @@ async function loadQuiz(){
    location.href="login.html";
    return;
   }
-  qs=await generateQuiz();
+  qs=await generateQuiz(authenticatedUser);
   idx=0;score=0;correct=0;wrong=0;
   render();
  }catch(error){
