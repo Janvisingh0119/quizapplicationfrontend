@@ -71,6 +71,16 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+// EmailJS settings for the "new account" welcome email.
+// Same service and public key as login.html; only the template ID is new.
+window.QM_EMAILJS_CONFIG = {
+  serviceId: "service_13211tt",
+  templateId: "template_e8lsqcy",
+  publicKey: "hsu6V-ZXEBeqCtpan"
+};
+</script>
   <script>
 // Add the web app configuration from Firebase Console to enable authentication.
 
@@ -153,6 +163,53 @@ document.addEventListener("DOMContentLoaded", () => {
       sessionStorage.setItem(
         "qm_loginEmailNotice",
         "You are signed in, but the login email notification could not be sent. Check the EmailJS service and template settings."
+      );
+    }
+  };
+
+  const notifyNewAccount = async user => {
+    const config = window.QM_EMAILJS_CONFIG;
+    if (
+      typeof emailjs === "undefined" ||
+      !config ||
+      Object.values(config).some(
+        value => typeof value !== "string" || !value || value.startsWith("YOUR_")
+      )
+    ) {
+      console.warn("Welcome email was skipped because EmailJS is not configured.");
+      sessionStorage.setItem(
+        "qm_loginEmailNotice",
+        "Your account was created, but the welcome email was not sent. Configure the EmailJS template ID in register.html."
+      );
+      return;
+    }
+
+    try {
+      if (typeof emailjs.init === "function") {
+        emailjs.init({ publicKey: config.publicKey });
+      }
+
+      const templateParams = {
+        to_email: user.email,
+        to_name: user.name || user.email.split("@")[0],
+        login_email: user.email,
+        signup_time: new Date().toLocaleString(),
+        login_url: new URL("login.html", location.href).href,
+        app_name: "QuizMaster"
+      };
+
+      try {
+        await emailjs.send(config.serviceId, config.templateId, templateParams, {
+          publicKey: config.publicKey
+        });
+      } catch (v4Error) {
+        await emailjs.send(config.serviceId, config.templateId, templateParams, config.publicKey);
+      }
+    } catch (error) {
+      console.error("Could not send the welcome email:", error);
+      sessionStorage.setItem(
+        "qm_loginEmailNotice",
+        "Your account was created, but the welcome email could not be sent. Check the EmailJS service and template settings."
       );
     }
   };
@@ -247,6 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "Your account was created and you are signed in, but your Firestore profile could not be saved. Quiz generation uses Firebase Authentication and can still work."
         );
       }
+      await notifyNewAccount(profile);
       localStorage.setItem("qm_currentUser", JSON.stringify({ id: credential.user.uid, uid: credential.user.uid, ...profile }));
       location.href = "home.html";
     } catch (error) {
